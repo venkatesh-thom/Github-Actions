@@ -1,17 +1,19 @@
 name: Timeout Example
-on: [push]
 
+on: [push]
+concurrency:
+    group: ${{ github.repository }}-${{ github.ref }}
+    cancel-in-progress: true # it will cancel the running one, pickup new one
 jobs:
-    timeout-job:
+    test-timeout:
         runs-on: ubuntu-latest
         timeout-minutes: 5
 
         steps:
-            - name: start
-              run: echo "Job "
+            - name: Start job
+              run: echo "This job will timeout if it runs longer than 5 minutes."
 
-            - name: Long Running Task
+            - name: Simulate long running task
               run: |
-                  echo "Starting a long task..."
-                  sleep 120
-                  echo "This will not be printed if the job times out."
+                  echo "Sleeping for 10 minutes..."
+                  sleep 600
