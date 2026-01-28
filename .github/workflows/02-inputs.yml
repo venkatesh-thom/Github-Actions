@@ -1,0 +1,46 @@
+name: inputs-example
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: "Your name"
+                required: true
+                default: "John Doe"
+
+            env:
+                description: "Environment to run the workflow"
+                required: true
+                default: "production"
+
+            deploy:
+                description: "Deploy the applications"
+                required: true
+                type: boolean
+                default: false
+
+            log-level:
+                description: "Log level for the workflow"
+                required: true
+                type: choice
+                options:
+                    - debug
+                    - info
+                    - warning
+                    - error
+                default: "info"
+
+            retry_count:
+                description: "Number of retries on failure"
+                required: false
+                type: number
+                default: 3
+
+jobs:
+    print-inputs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Inputs
+              run: |
+                  echo "Name: ${{ github.event.inputs.name }}"
+                  echo "Environment: ${{ github.event.inputs.env }}"
+                  echo "Retry Count: ${{ github.event.inputs.retry_count }}"
