@@ -1,0 +1,16 @@
+name: Testing on Condtions
+on: [push]
+jobs:
+    condtions-demo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checking the demo
+              run: echo "This is condtions demo"
+
+            - name: Run only on main branch
+              if: github.ref == 'refs/heads/main'
+              run: echo "This step runs only on the main branch."
+
+            - name: Run only on dev brach
+              if: github.ref == 'refs/heads/feature-*'
+              run: echo "This step runs only on the dev branch."
