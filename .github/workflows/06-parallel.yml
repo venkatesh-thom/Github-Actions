@@ -1,0 +1,27 @@
+name: Testing on Parallel Jobs
+on: [push]
+jobs:
+    jobs-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print hello world
+              run: sleep 5
+
+    jobs-2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print hello world
+              run: sleep 5
+
+    jobs-3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print hello world
+              run: sleep 5
+
+    jobs-4:
+        needs: [jobs-1, jobs-2, jobs-3]
+        runs-on: ubuntu-latest
+        steps:
+            - name: print hello world
+              run: echo "This is final"
