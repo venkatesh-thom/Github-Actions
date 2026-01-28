@@ -15,5 +15,5 @@ jobs:
 
             - name: Simulate long running task
               run: |
-                  echo "Sleeping for 10 minutes..."
+                  echo "Sleeping for 10 minutes........"
                   sleep 600
