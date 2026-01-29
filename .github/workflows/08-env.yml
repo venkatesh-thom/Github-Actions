@@ -7,7 +7,7 @@ on: [push]
 # -------------------------
 env:
     APP_NAME: my-app
-    GLOBAL_TIMEOUT: 30
+    GLOBAL_TIMEOUT: 10
     OWNER: "Join DevOps"
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
         # -------------------------
         env:
             JOB_ENV: "job-level-value"
-            REGION: "ap-south-1"
+            REGION: "us-east-1"
 
         steps:
             - name: Show workflow-level + job-level env

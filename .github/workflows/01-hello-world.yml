@@ -6,10 +6,17 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Say hello
-              run: echo "Hello, world!"
+              run: echo "Hello, world!"  ### SHELL COMMAND ###
 
             - name: Show current directory
               run: pwd
 
             - name: List files
               run: ls -lrtah    
+
+            - name: Github 
+              uses: actions/github-script@v6   #### this for github script action ---> uses
+              with:
+                  script: |
+                    console.log("Hello from GitHub Actions script!")
+                
